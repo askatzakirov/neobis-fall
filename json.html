@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Json Data</title>
+</head>
+<body>
+<script>
+
+	let url = 'https://jsonplaceholder.typicode.com/posts';
+
+	fetch(url).then(res => 
+		res.json()).then((out) => {
+		  		console.log('My JSON data', out);
+		  		if(out.length>0){
+		  			let temp = "";
+
+		  			out.forEach((u)=>{
+		  				temp +="<tr>";
+		  				temp += "<td>"+u.albumId+"</td>";
+		  				temp += "<td>"+u.title+"</td>";
+		  				temp += "<td>"+u.url+"</td></tr>";
+		  			});
+		  			document.getElementById("datas").innerHTML = temp; 
+		  		}
+	})
+	.catch(err => { throw err });
+</script>
+</body>
+</html>
